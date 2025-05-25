@@ -1,4 +1,4 @@
-# 🚀 Navigation3SampleApp
+# 🚀 Getting Started with Modern Android Development
 
 A modern Android application built with **Jetpack Compose**, **Jetpack Navigation 3**, **Ktor Client**, and **Koin**, structured using **Clean Architecture** principles.
 
