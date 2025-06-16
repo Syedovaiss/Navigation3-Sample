@@ -19,6 +19,7 @@ import io.ktor.client.plugins.logging.Logging
 import io.ktor.client.plugins.observer.ResponseObserver
 import io.ktor.client.request.header
 import io.ktor.client.statement.request
+import io.ktor.http.ContentType
 import io.ktor.http.HttpHeaders
 import io.ktor.http.URLProtocol
 import io.ktor.serialization.kotlinx.json.json
@@ -50,10 +51,12 @@ val viewModelModule = module {
 }
 
 val networkModule = module {
+    single { BuildConfig.HOST }
     single<Navigation3HttpClient> { DefaultNavigation3HttpClient(get()) }
 
     single {
         HttpClient(Android) {
+            val appHost: String = get()
             install(ContentNegotiation) {
                 json(
                     Json {
@@ -87,9 +90,9 @@ val networkModule = module {
             install(DefaultRequest) {
                 url {
                     protocol = URLProtocol.HTTPS
-                    host = "jsonplaceholder.typicode.com"
+                    host = appHost
                 }
-                header(HttpHeaders.ContentType, "application/json")
+                header(HttpHeaders.ContentType, ContentType.Application.Json.toString())
 
             }
         }
