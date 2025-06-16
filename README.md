@@ -8,6 +8,7 @@ This project demonstrates:
 - Coroutine-powered networking with Ktor
 - Dependency injection with Koin
 - Modular architecture with clear separation of Presentation, Domain, and Data layers
+- Unit Testing
 
 ---
 
